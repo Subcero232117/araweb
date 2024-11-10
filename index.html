@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Menu</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="aurora">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="snow_wrap">
+        <div class="snow"></div>
+    </div>
+    <div class="mountain"></div>
+    
+    <!-- Elementos para el efecto de agujero negro -->
+    <div class="black-hole"></div>
+    <div class="teleport-message">¡Teletransporte Exitoso!</div>
+    
+    <div class="container">
+        <img src="/image.png" alt=" " class="logo">
+        <div class="buttons">
+            <button class="btn" onclick="startTeleport('play.html')">
+                <span class="emoji">🎮</span> Play
+            </button>
+            <button class="btn" onclick="openSettings()">
+                <span class="emoji">⚙️</span> Settings
+            </button>
+            <button class="btn" onclick="startTeleport('https://patreon.com/AntarticStudios?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink')">
+                <span class="emoji">🏪</span> Store
+            </button>
+        </div>
+
+        <!-- Nueva sección de redes sociales -->
+        <div class="social-links">
+            <a href="TU_LINK_YOUTUBE" class="social-btn" onclick="startTeleport(this.href)">
+                <span class="emoji"></span>
+                <i class="fab fa-youtube"></i>
+                YouTube
+            </a>
+            <a href="https://discord.gg/2veuv6EgJX" class="social-btn" onclick="startTeleport(this.href)">
+                <span class="emoji"></span>
+                <i class="fab fa-discord"></i>
+                Discord
+            </a>
+            <a href="TU_LINK_TWITTER" class="social-btn" onclick="startTeleport(this.href)">
+                <span class="emoji"></span>
+                <i class="fab fa-twitter"></i>
+                Twitter
+            </a>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="modal" id="settingsModal">
+        <!-- El resto del código del modal permanece igual -->
+        <div class="modal-header">
+            <div class="modal-title">
+                <span class="emoji">⚙️</span> Settings
+            </div>
+            <button class="close-btn" onclick="closeSettings()">×</button>
+        </div>
+        
+        <div class="settings-section">
+            <div class="settings-title">Account</div>
+            <div class="settings-item">
+                <div class="settings-item-left">
+                    <i class="fab fa-discord settings-icon"></i>
+                    <span>Discord Account</span>
+                </div>
+                <button class="connect-btn">
+                    <i class="fab fa-discord"></i>
+                    Connect
+                </button>
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <div class="settings-title">Game Settings</div>
+            <div class="settings-item">
+                <div class="settings-item-left">
+                    <i class="fas fa-volume-up settings-icon"></i>
+                    <span>Music Volume</span>
+                </div>
+                <div class="volume-control">
+                    <input type="range" class="volume-slider" min="0" max="100" value="80">
+                </div>
+            </div>
+            <div class="settings-item">
+                <div class="settings-item-left">
+                    <i class="fas fa-volume-up settings-icon"></i>
+                    <span>Effects Volume</span>
+                </div>
+                <div class="volume-control">
+                    <input type="range" class="volume-slider" min="0" max="100" value="100">
+                </div>
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <div class="settings-title">Visual Settings</div>
+            <div class="settings-item">
+                <div class="settings-item-left">
+                    <i class="fas fa-snowflake settings-icon"></i>
+                    <span>Snow Effect</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="settings-item">
+                <div class="settings-item-left">
+                    <i class="fas fa-moon settings-icon"></i>
+                    <span>Aurora Effect</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <div class="settings-title">Preferences</div>
+            <div class="settings-item">
+                <div class="settings-item-left">
+                    <i class="fas fa-language settings-icon"></i>
+                    <span>Language</span>
+                </div>
+                <select class="language-select">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                </select>
+            </div>
+            <div class="settings-item">
+                <div class="settings-item-left">
+                    <i class="fas fa-bell settings-icon"></i>
+                    <span>Notifications</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
