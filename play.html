@@ -49,12 +49,87 @@
 
     <!-- Panel de chat -->
     <div class="chat-panel">
-        <!-- Contenido del chat -->
+        <div class="chat-header">
+            <h3>Chat IA</h3>
+            <button class="close-chat">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-messages">
+            <!-- Los mensajes se agregarán dinámicamente -->
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Escribe un mensaje...">
+            <button class="send-message">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
     </div>
+
+    <!-- Modal de configuración -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <h2>Configuración</h2>
+            <div class="settings-section">
+                <h3>Efectos visuales</h3>
+                <div class="setting-item">
+                    <label>
+                        <input type="checkbox" id="showStars" checked>
+                        Mostrar estrellas
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <label>
+                        <input type="checkbox" id="showAurora" checked>
+                        Mostrar aurora
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <label>
+                        <input type="checkbox" id="showSnow" checked>
+                        Mostrar nieve
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <label>
+                        <input type="checkbox" id="showComets" checked>
+                        Mostrar cometas
+                    </label>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h3>Interfaz</h3>
+                <div class="setting-item">
+                    <label>Tema:</label>
+                    <select id="themeSelect">
+                        <option value="dark">Oscuro</option>
+                        <option value="light">Claro</option>
+                        <option value="cosmic">Cósmico</option>
+                    </select>
+                </div>
+            </div>
+            <button class="save-settings">Guardar cambios</button>
+        </div>
+    </div>
+
+    <!-- Overlay para modales -->
+    <div id="overlay"></div>
 
     <!-- Contenido principal -->
     <div class="main-content">
-        <!-- Aquí va el contenido principal del juego -->
+        <div class="welcome-section">
+            <h1>Bienvenido al Sistema Artic</h1>
+            <p>Explora el Universo con nuestra web</p>
+        </div>
+    </div>
+
+    <!-- Sistema de notificaciones -->
+    <div class="notifications-container"></div>
+
+    <!-- Animación de teletransporte -->
+    <div class="black-hole"></div>
+    <div class="teleport-message">
+        <span>Teletransportando...</span>
     </div>
 
     <script src="script.js"></script>
