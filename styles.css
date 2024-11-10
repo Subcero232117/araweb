@@ -171,116 +171,156 @@ body {
     }
 }
 
-/* Barra lateral y contenido principal */
-.game-container {
-    display: flex;
-    width: 100vw;
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0a0a2a;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
     height: 100vh;
-    position: relative;
+}
+
+/* Efectos de fondo */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    animation: twinkle var(--duration) infinite;
+}
+
+.aurora {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        rgba(0, 128, 128, 0.1),
+        rgba(0, 255, 255, 0.1),
+        rgba(128, 0, 128, 0.1));
+    filter: blur(60px);
+    animation: aurora 20s infinite;
+    z-index: 1;
+}
+
+/* Efecto de nieve */
+.snow_wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
     z-index: 2;
 }
 
+.snow {
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at center, white 0.1em, transparent 0.1em),
+        radial-gradient(circle at center, white 0.1em, transparent 0.1em);
+    background-size: 1em 1em;
+    animation: snowfall 10s linear infinite;
+    transform: rotate(45deg);
+}
+
+/* Efectos de cometas */
+.comet {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: comet 8s linear;
+    z-index: 1;
+}
+
+.comet::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, white, transparent);
+    transform: translateX(-100%);
+}
+
+.comet.small { transform: scale(0.5); }
+.comet.medium { transform: scale(1); }
+.comet.large { transform: scale(1.5); }
+
+/* Barra lateral */
 .sidebar {
-    width: 250px;
-    background: rgba(13, 17, 38, 0.95);
-    backdrop-filter: blur(10px);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    position: fixed;
+    left: 0;
+    top: 0;
     height: 100vh;
+    width: 200px;
+    background: rgba(10, 10, 42, 0.9);
     padding: 20px;
-    transition: transform 0.3s ease;
-    position: relative;
+    transition: 0.3s;
     z-index: 100;
 }
 
 .sidebar.collapsed {
-    transform: translateX(-250px);
+    width: 60px;
 }
 
-/* Botón de colapsar */
 .collapse-btn {
     position: absolute;
-    right: -40px;
+    right: -15px;
     top: 20px;
-    background: rgba(13, 17, 38, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #1a1a4a;
+    border: none;
     color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 0 8px 8px 0;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s;
+    z-index: 101;
 }
 
-.collapse-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-/* Botones de la barra lateral */
 .sidebar-btn {
     width: 100%;
-    padding: 15px;
-    margin-bottom: 10px;
+    padding: 12px;
+    margin: 8px 0;
     background: rgba(255, 255, 255, 0.1);
     border: none;
     border-radius: 8px;
     color: white;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s;
-    font-family: 'Mountains of Christmas', cursive;
-    position: relative;
-    overflow: hidden;
-}
-
-.sidebar-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateX(5px);
+    transition: 0.3s;
+    text-align: left;
 }
 
 .sidebar-btn i {
-    font-size: 20px;
-    color: #00ffff;
+    margin-right: 10px;
+    width: 20px;
 }
 
-/* Efecto RGB para los botones */
-.sidebar-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-    );
-    transition: 0.5s;
-}
-
-.sidebar-btn:hover::before {
-    left: 100%;
-}
-
-/* Chat IA Panel */
+/* Panel de chat */
 .chat-panel {
     position: fixed;
-    right: -400px;
+    right: -300px;
     top: 0;
-    width: 400px;
+    width: 300px;
     height: 100vh;
-    background: rgba(13, 17, 38, 0.95);
-    backdrop-filter: blur(10px);
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-    transition: right 0.3s ease;
+    background: rgba(10, 10, 42, 0.9);
+    transition: 0.3s;
     z-index: 99;
-    padding: 20px;
 }
 
 .chat-panel.active {
@@ -289,14 +329,13 @@ body {
 
 /* Contenido principal */
 .main-content {
-    flex-grow: 1;
+    margin-left: 200px;
     padding: 20px;
-    transition: margin-left 0.3s ease;
-    margin-left: 250px;
+    transition: 0.3s;
 }
 
 .main-content.sidebar-collapsed {
-    margin-left: 40px;
+    margin-left: 60px;
 }
 
 /* Notificaciones */
@@ -304,41 +343,72 @@ body {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: rgba(13, 17, 38, 0.95);
     padding: 15px 25px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
     border-radius: 8px;
-    border-left: 4px solid #00ffff;
-    transform: translateX(120%);
     animation: slideIn 0.5s forwards;
     z-index: 1000;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto RGB para botones */
+.rgb-effect {
+    animation: rgb 3s linear infinite;
+}
+
+/* Animaciones */
+@keyframes twinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+}
+
+@keyframes aurora {
+    0%, 100% { transform: translateX(0) rotate(0); }
+    50% { transform: translateX(100px) rotate(180deg); }
+}
+
+@keyframes snowfall {
+    0% { background-position: 0 0; }
+    100% { background-position: 1em 1em; }
+}
+
+@keyframes comet {
+    from {
+        transform: translateX(-100px) translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(calc(100vw + 100px)) translateY(100px);
+        opacity: 0;
+    }
+}
+
+@keyframes comet-reverse {
+    from {
+        transform: translateX(calc(100vw + 100px)) translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100px) translateY(100px);
+        opacity: 0;
+    }
 }
 
 @keyframes slideIn {
-    to {
-        transform: translateX(0);
-    }
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes slideOut {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(120%);
-    }
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
 }
 
-/* Efectos RGB */
-@keyframes rgbBorder {
-    0% { border-color: #ff0000; }
-    33% { border-color: #00ff00; }
-    66% { border-color: #0000ff; }
-    100% { border-color: #ff0000; }
-}
-
-.rgb-effect {
-    animation: rgbBorder 2s linear infinite;
+@keyframes rgb {
+    0% { background: rgba(255, 0, 0, 0.2); }
+    33% { background: rgba(0, 255, 0, 0.2); }
+    66% { background: rgba(0, 0, 255, 0.2); }
+    100% { background: rgba(255, 0, 0, 0.2); }
 }
 
 /* Montaña */
